@@ -1,0 +1,23 @@
+post:
+  tags:
+    - VCP
+  summary: VCP Card Cancel request
+  operationId: VCPCancel
+  requestBody:
+    description: Optional description in *Markdown*
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ..\components\schemas\VCPCancel.yaml
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: integer
+            format: int32
+    '400':
+      description: Bad Request
+      content: {}

@@ -1,0 +1,19 @@
+post:
+  tags:
+    - DirectToDebit
+  summary: Direct To Debit Payment Create
+  operationId: DirectToDebitPayment
+  requestBody:
+    description: Optional description in *Markdown*
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ..\components\schemas\DirectToDebitPaymentCreate.yaml
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ..\components\schemas\DirectToDebitPaymentResponse.yaml

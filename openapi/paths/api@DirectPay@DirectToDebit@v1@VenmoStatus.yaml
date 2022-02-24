@@ -1,0 +1,19 @@
+post:
+  tags:
+    - Venmo
+  summary: Venmo Payment Status
+  operationId: VenmoStatus
+  requestBody:
+    description: Optional description in *Markdown*
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ..\components\schemas\VenmoPaymentStatus.yaml
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ..\components\schemas\VenmoPaymentResponseStatus.yaml

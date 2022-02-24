@@ -1,0 +1,23 @@
+post:
+  tags:
+    - VCP
+  summary: VCP Card Activity
+  operationId: VCPRealTimerequest
+  requestBody:
+    description: Optional description in *Markdown*
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ..\components\schemas\VCPRealTimerequest.yaml
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: integer
+            format: int32
+    '400':
+      description: Bad Request
+      content: {}
