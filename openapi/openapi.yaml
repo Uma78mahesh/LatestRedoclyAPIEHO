@@ -1,51 +1,77 @@
-openapi: 3.1.0
+openapi: 3.0.1
 info:
-  version: 1.0.0
-  title: Example.com
-  termsOfService: 'https://example.com/terms/'
+  title: ECHOHUB API
+  description: >-
+    API Endpoints for the ECHOHUB Project.
+
+
+    # Authentication
+
+    Authentication is a process by which a system verifies the identity of a
+    user accessing this API.       
+
+
+    <!-- ReDoc-Inject: <security-definitions> -->
+  version: v1
+  termsOfService: https://example.com
   contact:
-    email: contact@example.com
-    url: 'http://example.com/contact'
-  license:
-    name: Apache 2.0
-    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
-  x-logo:
-    url: 'https://redocly.github.io/openapi-template/logo.png'
-  description:
-    $ref: ./info-description.md
-tags:
-  - name: Echo
-    description: Example echo operations.
-  - name: User
-    description: Operations about users.
-  - name: Tag
-    description: This is a tag description.
+    name: ECHO Health Inc.
+    url: https://echohealthinc.com
+    email: Echo_Hub@echohealthinc.com
 servers:
-  - url: 'http://example.com/api/v1'
-  - url: 'https://example.com/api/v1'
+  - url: /v1
+security:
+  - x-ApiKey: []
+    x-ClientKey: []
 paths:
-  '/users/{username}':
-    $ref: 'paths/users@{username}.yaml'
-  /echo:
-    $ref: paths/echo.yaml
-  /pathItem:
-    $ref: paths/path-item.yaml
-  /pathItemWithExamples:
-    $ref: paths/path-item-with-examples.yaml
+  /api/eCheck/v1/MPXECheckPayeeContact:
+    $ref: paths/api@eCheck@v1@MPXECheckPayeeContact.yaml
+  /api/DirectPay/Deluxe/v1/DeluxeEcheck:
+    $ref: paths/api@DirectPay@Deluxe@v1@DeluxeEcheck.yaml
+  /api/DirectPay/Deluxe/v1/DeluxeEcheckCancel:
+    $ref: paths/api@DirectPay@Deluxe@v1@DeluxeEcheckCancel.yaml
+  /api/MedPay/V1/UpdateBlockedVCard:
+    $ref: paths/api@MedPay@V1@UpdateBlockedVCard.yaml
+  /api/payhub/v1/MedPayAPEXPayment:
+    $ref: paths/api@payhub@v1@MedPayAPEXPayment.yaml
+  /api/SelectPay/v1/Portal:
+    $ref: paths/api@SelectPay@v1@Portal.yaml
+  /api/VCP/V1/RealTime:
+    $ref: paths/api@VCP@V1@RealTime.yaml
+  /api/VCP/V1/Cancel:
+    $ref: paths/api@VCP@V1@Cancel.yaml
+  /api/DirectPay/DirectToDebit/v1/DirectToDebitPayment:
+    $ref: paths/api@DirectPay@DirectToDebit@v1@DirectToDebitPayment.yaml
+  /api/DirectPay/DirectToDebit/v1/DirectToDebitCancel:
+    $ref: paths/api@DirectPay@DirectToDebit@v1@DirectToDebitCancel.yaml
+  /api/DirectPay/DirectToDebit/v1/DirectToDebitStatus:
+    $ref: paths/api@DirectPay@DirectToDebit@v1@DirectToDebitStatus.yaml
+  /api/DirectPay/DirectToDebit/v1/VenmoPayment:
+    $ref: paths/api@DirectPay@DirectToDebit@v1@VenmoPayment.yaml
+  /api/DirectPay/DirectToDebit/v1/VenmoCancel:
+    $ref: paths/api@DirectPay@DirectToDebit@v1@VenmoCancel.yaml
+  /api/DirectPay/DirectToDebit/v1/VenmoStatus:
+    $ref: paths/api@DirectPay@DirectToDebit@v1@VenmoStatus.yaml
 components:
   securitySchemes:
-    main_auth:
-      type: oauth2
-      flows:
-        implicit:
-          authorizationUrl: 'http://example.com/api/oauth/dialog'
-          scopes:
-            'read:users': read users info
-            'write:users': modify or remove users
-    api_key:
+    x-ApiKey:
       type: apiKey
+      name: x-ApiKey
+      description: The API key.
       in: header
-      name: api_key
-    basic_auth:
-      type: http
-      scheme: basic
+    x-ClientKey:
+      type: apiKey
+      description: The client key.
+      name: x-ClientKey
+      in: header
+tags:
+  - name: eCheck
+    description: >
+      An eCheck, or electronic check, is a digital version of a paper check that
+      is used to make a payment online.    
+
+      With an eCheck, money is electronically withdrawn from the Payer’s
+      checking account.  
+
+      Money is transferred over the ACH (Automated Clearing House) network and
+      deposited into the Payee’s checking account.
